@@ -1,2 +1,4 @@
 thoughtspot-app-frontend/node_modules
 thoughtspot-app-backend/node_modules
+thoughtspot-app-backend/.env
+thoughtspot-app-backend/snowflake.log
