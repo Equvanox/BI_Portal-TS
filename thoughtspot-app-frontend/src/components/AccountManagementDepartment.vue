@@ -1,34 +1,39 @@
 <template>
-    <li id="general" class="menu-item" @click="$emit('toggle-submenu', 'general')" ref="generalMenuItem">
-        <a href="#" title="General">
-            <i class="fa-solid fa-folder-tree"></i>
-            <span v-if="isSidebarOpen">General (Beta)</span>
+    <li id="accountmanagement" class="menu-item" @click="$emit('toggle-submenu', 'accountmanagement')" ref="accountmanagementMenuItem">
+        <a href="#" title="Account Management">
+            <i class="fa-solid fa-users-gear"></i>
+            <span v-if="isSidebarOpen">Account Management</span>
         </a>
-        <div class="submenu" v-if="showSubMenu.general && isSidebarOpen" @click.stop>
+        <div class="submenu" v-if="showSubMenu.accountmanagement && isSidebarOpen" @click.stop>
             <ul class="submenu-list">
-                <li @click="switchDashboard('General Summary')">
+                <li @click="switchDashboard('Summary - Account Management')">
                     <a href="#" title="Summary">
-                        Summary
+                       Summary 
                     </a>
                 </li>
-                <li @click="switchDashboard('Bookings Dashboard')">
-                    <a href="#" title="Bookings Dashboard">
-                        Bookings Dashboard                   
+                <li @click="switchDashboard('CS Ops Dashboard')">
+                    <a href="#" title="CS Ops Dashboard">
+                        CS Ops Dashboard                   
                     </a>
                 </li>
-                <li @click="switchDashboard('FW Provider Delivery Daily')">
-                    <a href="#" title="FW Provider Delivery Daily">
-                        FW Provider Delivery Daily
+                <li @click="switchDashboard('FW Mapping Report')">
+                    <a href="#" title="FW Mapping Report">
+                        FW Mapping Report
                     </a>
                 </li>
-                <li @click="switchDashboard('Health Check Dashboard')">
-                    <a href="#" title="Health Check Dashboard">
-                        Health Check Dashboard
+                <li @click="switchDashboard('iSpot RE Reporting V.1')">
+                    <a href="#" title="iSpot RE Reporting V.1">
+                        iSpot RE Reporting V.1
                     </a>
                 </li>
-                <li @click="switchDashboard('MH Providers Daily Delivery Diff%')">
-                    <a href="#" title="MH Providers Daily Delivery Diff%">
-                        MH Providers Daily Delivery Diff%
+                <li @click="switchDashboard('MH Gray Attribution Dashboard')">
+                    <a href="#" title="MH Gray Attribution Dashboard">
+                        MH Gray Attribution Dashboard
+                    </a>
+                </li>
+                <li @click="switchDashboard('MH Mapping Report')">
+                    <a href="#" title="MH Mapping Report">
+                        MH Mapping Report
                     </a>
                 </li>
                 <li @click="switchDashboard('Political Dashboard')">
@@ -36,9 +41,19 @@
                         Political Dashboard
                     </a>
                 </li>
-                <li @click="switchDashboard('Publisher Dashboard')">
-                    <a href="#" title="Publisher Dashboard">
-                        Publisher Dashboard
+                <li @click="switchDashboard('POLK - Tier2 - v3')">
+                    <a href="#" title="POLK - Tier2 - v3">
+                        POLK - Tier2 - v3
+                    </a>
+                </li>
+                <li @click="switchDashboard('Proactive Spike Report')">
+                    <a href="#" title="Proactive Spike Report">
+                        Proactive Spike Report
+                    </a>
+                </li>
+                <li @click="switchDashboard('Provider Delivery')">
+                    <a href="#" title="Provider Delivery">
+                        Provider Delivery
                     </a>
                 </li>
             </ul>
@@ -77,71 +92,80 @@ export default {
             if (this.liveboardEmbed) {
                 this.liveboardEmbed.detach();
                 this.liveboardEmbed = null;
-            }
-            if (type === 'General Summary') {
-                this.dashboardType = type;
-                this.heading = type;
-                this.liveboardId = 'ef5b2449-05c0-4dd9-9494-70d93946c377';
-                this.$emit('setHeading', type);
-                this.renderLiveboard();
-            }
-            if (type === 'Bookings Dashboard') {
-                this.dashboardType = type;
-                this.heading = type;
-                this.liveboardId = '5a16fd22-3c8c-4889-b755-996256276bd8';
-                this.$emit('setHeading', type);
-                this.renderLiveboard();
-            }
-            if (type === "FW Provider Delivery Daily") {
+            }            
+            if (type === "Summary - Account Management") {
                 let remoteURL = window.location.href;
                 this.dashboardType = type;
                 this.heading = type;
                 if(remoteURL.includes("test")||remoteURL.includes("localhost")) {
-                    this.liveboardId = "49fd6bbe-c5de-4647-aa60-4fd5254ed0d9";
+                    this.liveboardId = "b98d930a-c120-43c7-b887-d802d33a1480";
                 }
                 else {
-                    this.liveboardId = "168708f1-735a-45d9-b5de-745ff53cf330";
+                    this.liveboardId = "8b62585d-a756-489f-8b43-126cde521f57";
                 }
                 this.$emit('setHeading', type);
                 this.renderLiveboard();
             }
-            if (type === "Health Check Dashboard") {
+            if (type === "CS Ops Dashboard") {
                 this.dashboardType = type;
                 this.heading = type;
-                this.liveboardId = "9dfb8021-6434-44e6-b997-4f09c0225098";
+                this.liveboardId = "44b62364-a815-4046-9fe2-e306f94ff3f1";
                 this.$emit('setHeading', type);
                 this.renderLiveboard();
             }
-            if (type === "MH Providers Daily Delivery Diff%") {
-                let remoteURL = window.location.href;
+            if (type === "FW Mapping Report") {
                 this.dashboardType = type;
                 this.heading = type;
-                if (remoteURL.includes("test") || remoteURL.includes("localhost")) {
-                    this.liveboardId = "21003e02-28b0-4602-8c2d-6ecd46e0fbbf";
-                }
-                else {
-                    this.liveboardId = "2e447650-9b96-4b0b-a1e7-747739ed6bc8";
-                }
+                this.liveboardId = "be1052ed-1c9c-4c3e-8429-3abcb671760b";
+                this.$emit('setHeading', type);
+                this.renderLiveboard();
+            }
+            if (type === "iSpot RE Reporting V.1") {
+                this.dashboardType = type;
+                this.heading = type;
+                this.liveboardId = "11b3d9c2-f06d-4ac0-8698-c7520c82c41b";
+                this.$emit('setHeading', type);
+                this.renderLiveboard();
+            }
+            if (type === "MH Gray Attribution Dashboard") {
+                this.dashboardType = type;
+                this.heading = type;
+                this.liveboardId = "dead66a6-d887-4842-93b4-9e014516fdab";
+                this.$emit('setHeading', type);
+                this.renderLiveboard();
+            }
+            if (type === "MH Mapping Report") {
+                this.dashboardType = type;
+                this.heading = type;
+                this.liveboardId = "a623e692-079a-4054-b904-63ec34fbddbb";
                 this.$emit('setHeading', type);
                 this.renderLiveboard();
             }
             if (type === "Political Dashboard") {
-                let remoteURL = window.location.href;
                 this.dashboardType = type;
                 this.heading = type;
-                if (remoteURL.includes("test")) {
-                    this.liveboardId = "a76d8032-849d-457e-8b9f-77c8656a2d0c";
-                }
-                else {
-                    this.liveboardId = "8c4efd21-2d16-4de7-b356-0e28f26bb3d9";
-                }
+                this.liveboardId = "2884cd02-4dd9-4fae-96b4-0c89d16237e6";
                 this.$emit('setHeading', type);
                 this.renderLiveboard();
             }
-            if (type === 'Publisher Dashboard') {
+            if (type === "POLK - Tier2 - v3") {
                 this.dashboardType = type;
                 this.heading = type;
-                this.liveboardId = "87acc5ca-7d56-40ae-8c9a-bd9ed46cb0cd";
+                this.liveboardId = "f0ae8e39-9b4c-44e9-a078-f6611772e8be";
+                this.$emit('setHeading', type);
+                this.renderLiveboard();
+            }
+            if (type === "Proactive Spike Report") {
+                this.dashboardType = type;
+                this.heading = type;
+                this.liveboardId = "04859d91-2f55-47dc-9f7d-8aa4d51c786a";
+                this.$emit('setHeading', type);
+                this.renderLiveboard();
+            }
+            if (type === "Provider Delivery") {
+                this.dashboardType = type;
+                this.heading = type;
+                this.liveboardId = "c53f98e9-c4c1-495c-a259-52fa55c6e011";
                 this.$emit('setHeading', type);
                 this.renderLiveboard();
             }

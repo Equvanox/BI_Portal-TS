@@ -23,11 +23,10 @@ h2 {
 }
 
 .logo img {
-  height: 45px;
-  width: 115px;
+  height: 40px;
+  width: 155px;
   margin-top: 10px;
   /* margin-right: 5px; */
-  margin-left: 10px;
 }
 
 .hamburger-menu {
@@ -78,6 +77,11 @@ h2 {
   transition: opacity 0.3s ease;
 }
 
+.submenu ul {
+  margin-top: -2px;
+  border-top: 2px solid greenyellow;
+}
+
 /* Submenu item styling */
 .submenu li {
   display: block;
@@ -103,7 +107,7 @@ h2 {
 }
 
 .sidebar {
-  width: 275px;
+  width: 300px;
   background-color: black;
   /* padding: 15px; */
   /* padding-top: 5px; */
@@ -202,31 +206,6 @@ html, body {
   }
 }
 
-.chart-container {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-}
-
-.chart1, .chart2 {
-  grid-column: span 1;
-  width: 700px;
-  height: 420px;  
-}
-
-.chart3 {
-  grid-column: span 2;
-}
-
-/* Optional styling for visualization */
-.chart {
-  padding: 20px;
-  border: 1px solid #ccc;
-  text-align: center;
-}
-
-
 #embed-container {
   width: 100%;
   height: 89.5vh;
@@ -237,33 +216,27 @@ html, body {
   padding-left: 20px;
 }
 
-.iframecontainer {
+/* .iframecontainer {
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding-top: 56.25%; /*16:9 Aspect Ratio*/
-}
+  padding-top: 56.25%;
+} */
 
 .responsive-iframe {
-  position: absolute;
-  top: 0;
+  position: relative;
+  top:0;
   left: 0;
+  overflow: hidden;
   width: 100%;
-  height: 76%;
-  border: solid 1px;
+  height: 100%;
   margin-bottom: auto;
 }
+
 
 .scrollable-container {
   max-height: 89vh; 
   overflow-y: auto;  
   padding: 10px;     
   background-color: #f9f9f9;
-}
-
-.tableauPlaceholder {
-  position: relative;
-  width: 100%;
-  height: 700px;
-  overflow-y: auto;
 }

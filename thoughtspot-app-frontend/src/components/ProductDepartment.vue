@@ -1,44 +1,34 @@
 <template>
-    <li id="general" class="menu-item" @click="$emit('toggle-submenu', 'general')" ref="generalMenuItem">
-        <a href="#" title="General">
-            <i class="fa-solid fa-folder-tree"></i>
-            <span v-if="isSidebarOpen">General (Beta)</span>
+    <li id="product" class="menu-item" @click="$emit('toggle-submenu', 'product')" ref="productMenuItem">
+        <a href="#" title="Product">
+            <i class="fa-solid fa-cubes"></i>
+            <span v-if="isSidebarOpen">Product (Beta)</span>
         </a>
-        <div class="submenu" v-if="showSubMenu.general && isSidebarOpen" @click.stop>
+        <div class="submenu" v-if="showSubMenu.product && isSidebarOpen" @click.stop>
             <ul class="submenu-list">
-                <li @click="switchDashboard('General Summary')">
-                    <a href="#" title="Summary">
-                        Summary
+                <li @click="switchDashboard('POLK - Tier2 - v3')">
+                    <a href="#" title="POLK - Tier2 - v3">
+                        POLK - Tier2 - v3
                     </a>
                 </li>
-                <li @click="switchDashboard('Bookings Dashboard')">
-                    <a href="#" title="Bookings Dashboard">
-                        Bookings Dashboard                   
+                <li @click="switchDashboard('iSpot Web Conversion Reporting - V1.0')">
+                    <a href="#" title="iSpot Web Conversion Reporting - V1.0">
+                        iSpot Web Conversion Reporting - V1.0                   
                     </a>
                 </li>
-                <li @click="switchDashboard('FW Provider Delivery Daily')">
-                    <a href="#" title="FW Provider Delivery Daily">
-                        FW Provider Delivery Daily
+                <li @click="switchDashboard('iSpot RE Reporting V.1 - Incremental, LLV, Total')">
+                    <a href="#" title="iSpot RE Reporting V.1 - Incremental, LLV, Total">
+                        iSpot RE Reporting V.1 - Incremental, LLV, Total
                     </a>
                 </li>
-                <li @click="switchDashboard('Health Check Dashboard')">
-                    <a href="#" title="Health Check Dashboard">
-                        Health Check Dashboard
+                <li @click="switchDashboard('iSpot RE Reporting V.1')">
+                    <a href="#" title="iSpot RE Reporting V.1">
+                        iSpot RE Reporting V.1
                     </a>
                 </li>
-                <li @click="switchDashboard('MH Providers Daily Delivery Diff%')">
-                    <a href="#" title="MH Providers Daily Delivery Diff%">
-                        MH Providers Daily Delivery Diff%
-                    </a>
-                </li>
-                <li @click="switchDashboard('Political Dashboard')">
-                    <a href="#" title="Political Dashboard">
-                        Political Dashboard
-                    </a>
-                </li>
-                <li @click="switchDashboard('Publisher Dashboard')">
-                    <a href="#" title="Publisher Dashboard">
-                        Publisher Dashboard
+                <li @click="switchDashboard('Sales Conversion - v1.0')">
+                    <a href="#" title="Sales Conversion - v1.0">
+                        Sales Conversion - v1.0
                     </a>
                 </li>
             </ul>
@@ -78,70 +68,38 @@ export default {
                 this.liveboardEmbed.detach();
                 this.liveboardEmbed = null;
             }
-            if (type === 'General Summary') {
+            if (type === 'POLK - Tier2 - v3') {
                 this.dashboardType = type;
                 this.heading = type;
-                this.liveboardId = 'ef5b2449-05c0-4dd9-9494-70d93946c377';
+                this.liveboardId = "f0ae8e39-9b4c-44e9-a078-f6611772e8be";
                 this.$emit('setHeading', type);
                 this.renderLiveboard();
             }
-            if (type === 'Bookings Dashboard') {
+            if (type === 'iSpot Web Conversion Reporting - V1.0') {
                 this.dashboardType = type;
                 this.heading = type;
-                this.liveboardId = '5a16fd22-3c8c-4889-b755-996256276bd8';
+                this.liveboardId = "ddb5c57a-af90-474d-877f-3c7a91daa561";
                 this.$emit('setHeading', type);
                 this.renderLiveboard();
             }
-            if (type === "FW Provider Delivery Daily") {
-                let remoteURL = window.location.href;
+            if (type === 'iSpot RE Reporting V.1 - Incremental, LLV, Total') {
                 this.dashboardType = type;
                 this.heading = type;
-                if(remoteURL.includes("test")||remoteURL.includes("localhost")) {
-                    this.liveboardId = "49fd6bbe-c5de-4647-aa60-4fd5254ed0d9";
-                }
-                else {
-                    this.liveboardId = "168708f1-735a-45d9-b5de-745ff53cf330";
-                }
+                this.liveboardId = "7a9112ca-c1d6-4076-944e-940acbfdd921";
                 this.$emit('setHeading', type);
                 this.renderLiveboard();
             }
-            if (type === "Health Check Dashboard") {
+            if (type === 'iSpot RE Reporting V.1') {
                 this.dashboardType = type;
                 this.heading = type;
-                this.liveboardId = "9dfb8021-6434-44e6-b997-4f09c0225098";
+                this.liveboardId = "11b3d9c2-f06d-4ac0-8698-c7520c82c41b";
                 this.$emit('setHeading', type);
                 this.renderLiveboard();
             }
-            if (type === "MH Providers Daily Delivery Diff%") {
-                let remoteURL = window.location.href;
+            if (type === 'Sales Conversion - v1.0') {
                 this.dashboardType = type;
                 this.heading = type;
-                if (remoteURL.includes("test") || remoteURL.includes("localhost")) {
-                    this.liveboardId = "21003e02-28b0-4602-8c2d-6ecd46e0fbbf";
-                }
-                else {
-                    this.liveboardId = "2e447650-9b96-4b0b-a1e7-747739ed6bc8";
-                }
-                this.$emit('setHeading', type);
-                this.renderLiveboard();
-            }
-            if (type === "Political Dashboard") {
-                let remoteURL = window.location.href;
-                this.dashboardType = type;
-                this.heading = type;
-                if (remoteURL.includes("test")) {
-                    this.liveboardId = "a76d8032-849d-457e-8b9f-77c8656a2d0c";
-                }
-                else {
-                    this.liveboardId = "8c4efd21-2d16-4de7-b356-0e28f26bb3d9";
-                }
-                this.$emit('setHeading', type);
-                this.renderLiveboard();
-            }
-            if (type === 'Publisher Dashboard') {
-                this.dashboardType = type;
-                this.heading = type;
-                this.liveboardId = "87acc5ca-7d56-40ae-8c9a-bd9ed46cb0cd";
+                this.liveboardId = "70bdd0c8-bf45-4fa1-a107-4f86386d95c2";
                 this.$emit('setHeading', type);
                 this.renderLiveboard();
             }

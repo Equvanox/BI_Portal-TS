@@ -4,7 +4,7 @@
           <i class="fas fa-bars"></i>
       </div>
       <div class="logo">
-          <img src="@/assets/logo_dashboard.jpg" alt="Logo" />
+          <img src="@/assets/premion_logo.jpg" alt="Logo" />
       </div>
 
       <nav class="menu">
