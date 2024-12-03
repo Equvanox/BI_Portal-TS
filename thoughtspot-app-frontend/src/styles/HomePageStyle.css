@@ -63,6 +63,10 @@ h2 {
   margin-right: 10px;
 }
 
+nav > ul > li:hover {
+  background-color: #2e2e2e;
+}
+
 .submenu {
   z-index: 100;
   top: 0;
@@ -78,7 +82,7 @@ h2 {
 }
 
 .submenu ul {
-  margin-top: -2px;
+  margin-top: -1px;
   border-top: 2px solid greenyellow;
 }
 
@@ -172,6 +176,11 @@ h2 {
   white-space: nowrap;
 }
 
+.sidebar ul li ul li:hover a {
+  background-color: greenyellow;
+  color: black;
+}
+
 .content {
   flex: 1;
   padding: 20px;
@@ -208,12 +217,14 @@ html, body {
 
 #embed-container {
   width: 100%;
-  height: 89.5vh;
+  height: 95.5vh;
+  border-top: 1px solid #d2d2d2;
 }
 
 #embed-title {
   width: 100%;
-  padding-left: 20px;
+  padding-left: 15px;
+  background: #f4f4f4;
 }
 
 /* .iframecontainer {

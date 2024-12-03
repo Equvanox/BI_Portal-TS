@@ -8,7 +8,7 @@
             <ul class="submenu-list">
                 <li @click="switchDashboard('General Summary')">
                     <a href="#" title="Summary">
-                        Summary
+                        Summary - General
                     </a>
                 </li>
                 <li @click="switchDashboard('Bookings Dashboard')">

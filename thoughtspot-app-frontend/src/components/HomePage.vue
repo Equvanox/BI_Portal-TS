@@ -1,11 +1,10 @@
 <template>
   <div class="dashboard-page screen">
-    <!-- Header with Menu -->
     <NavbarComponent 
       @toggle_sidebar="toggleSidebar"
+      @oneviewflag="oneviewflag"
     />
 
-    <!-- Sidebar with Icons -->
     <div class="main-container screen">
       <aside class="sidebar" :class="{ collapsed: !isSidebarOpen }">
         <nav>
@@ -74,12 +73,26 @@
               @handle-click-outside="handleClickOutside"
               @setHeading="setHeading"
             />
+            <SettingsPage 
+              :id="'settings'"
+              :isSidebarOpen="isSidebarOpen"
+              :showSubMenu="showSubMenu"
+              @toggle-submenu="toggleSubMenu"
+              @handle-click-outside="handleClickOutside"
+              @setHeading="setHeading"
+            />
+            <li id="logout" class="menu-item" @click="signOut()" ref="logoutMenuItem">
+              <a href="" title="Logout">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <span v-if="isSidebarOpen">Signout</span>
+              </a>
+            </li>
           </ul>
         </nav>
       </aside>
 
       <div id="embed-title">
-        <h2>{{ heading }}</h2>
+        <h2 v-if=" flag === false ">{{ heading }}</h2>
         <div id="embed-container"></div>
       </div>
     </div>
@@ -96,6 +109,7 @@ import PlanningDepartment from '@/components/PlanningDepartment.vue';
 import AccountManagementDepartment from '@/components/AccountManagementDepartment.vue';
 import ProductDepartment from '@/components/ProductDepartment.vue';
 import ExecutiveDepartment from '@/components/ExecutiveDepartment.vue';
+import SettingsPage from '@/components/extras/SettingsComponent.vue';
 import '@/styles/HomePageStyle.css';
 export default {
   data() {
@@ -108,7 +122,8 @@ export default {
       isSidebarOpen: false,
       dashboardType : 'General Summary',
       liveboardId: 'ef5b2449-05c0-4dd9-9494-70d93946c377',
-      heading: 'General Summary'
+      heading: 'Summary - General',
+      flag: false
     };
   },
   components: { 
@@ -120,9 +135,13 @@ export default {
     PlanningDepartment,
     AccountManagementDepartment,
     ProductDepartment,
-    ExecutiveDepartment
+    ExecutiveDepartment,
+    SettingsPage
   },
   methods: {
+    oneviewflag() {
+      this.flag = true;
+    },
     toggleSubMenu(id) {
       this.showSubMenu[id] = !this.showSubMenu[id];
     },
@@ -140,6 +159,7 @@ export default {
       }
     },
     setHeading(heading, kpi) { 
+      this.flag = false;
       this.heading = heading;
       this.kpi = kpi
     },

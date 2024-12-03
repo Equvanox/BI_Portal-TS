@@ -8,7 +8,7 @@
             <ul class="submenu-list">
                 <li @click="switchDashboard('AdOps Summary')">
                     <a href="#" title="Summary">
-                        Summary
+                        Summary - AdOps
                     </a>
                 </li>
                 <li @click="switchDashboard('Audience Segments Delivery Report')">
@@ -155,7 +155,7 @@ export default {
         return {
             dashboardType : 'General Summary',
             liveboardId: 'ef5b2449-05c0-4dd9-9494-70d93946c377',
-            heading: 'General Summary',
+            heading: 'Summary - General',
         }
     },
     props: {
