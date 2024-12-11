@@ -82,7 +82,7 @@ nav > ul > li:hover {
 }
 
 .submenu ul {
-  margin-top: -1px;
+  margin-top: -2px;
   border-top: 2px solid greenyellow;
 }
 

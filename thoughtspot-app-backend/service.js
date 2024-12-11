@@ -1,5 +1,4 @@
 require('dotenv').config();
-const jwt = require('jsonwebtoken');
 const snowflake = require('snowflake-sdk');
 const { Client } = require('pg');
 
@@ -62,28 +61,14 @@ const querySnowflake = async (sqlQuery) => {
     });
 };
 
-const authenticateJWT = (req, res, next) => {
-    const token = req.headers.authorization;
-    if (!token) {
-        return res.sendStatus(403);
-    }
-    jwt.verify(token, 'secret-key', (err, user) => {
-        if (err) {
-            return res.sendStatus(403);
-        }
-        req.user = user;
-        next();
-    });
-};
 
 async function login(username, password) {
     try {
         const users = await getUsersFromPostgres();
         var user = null;
         for (let i=0; i<users.length; i++) {
-            if ( users[i].username == username ) {
+            if ( users[i].username === username && users[i].password === password) {
                 user = users[i];
-                // console.log(username, user.username);
                 break;
             }
         }
@@ -96,11 +81,9 @@ async function login(username, password) {
         console.log(error.message);
         return 1;
     }
-
 };
 
 module.exports = {
     querySnowflake,
-    authenticateJWT,
     login
 };

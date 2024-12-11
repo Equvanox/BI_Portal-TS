@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import NavbarComponent from '@/components/extras/NavbarComponent.vue';
+import NavbarComponent from '@/components/utils/NavbarComponent.vue';
 import GeneralDepartment from '@/components/GeneralDepartment.vue';
 import AdOpsDepartment from '@/components/AdOpsDepartment.vue';
 import YieldDepartment from '@/components/YieldDepartment.vue';
@@ -109,7 +109,7 @@ import PlanningDepartment from '@/components/PlanningDepartment.vue';
 import AccountManagementDepartment from '@/components/AccountManagementDepartment.vue';
 import ProductDepartment from '@/components/ProductDepartment.vue';
 import ExecutiveDepartment from '@/components/ExecutiveDepartment.vue';
-import SettingsPage from '@/components/extras/SettingsComponent.vue';
+import SettingsPage from '@/components/utils/SettingsComponent.vue';
 import '@/styles/HomePageStyle.css';
 export default {
   data() {
