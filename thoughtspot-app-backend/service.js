@@ -1,14 +1,14 @@
 require('dotenv').config();
 const snowflake = require('snowflake-sdk');
-const { Client } = require('pg');
+// const { Client } = require('pg');
 
-const pgClient = new Client({
-    user: process.env.PG_USER,
-    host: process.env.PG_HOST,
-    database: process.env.PG_DATABASE,
-    password: process.env.PG_PASSWORD,
-    port: process.env.PG_PORT,
-});
+// const pgClient = new Client({
+//     user: process.env.PG_USER,
+//     host: process.env.PG_HOST,
+//     database: process.env.PG_DATABASE,
+//     password: process.env.PG_PASSWORD,
+//     port: process.env.PG_PORT,
+// });
 
 const connection = snowflake.createConnection({
     account: process.env.SNOWFLAKE_ACCOUNT,
@@ -19,13 +19,13 @@ const connection = snowflake.createConnection({
 });
 
 
-pgClient.connect((err) => {
-    if (err) {
-        console.error("Failed to connect to PostgreSQL:", err);
-    } else {
-        console.log("Connected to PostgreSQL.");
-    }
-});
+// pgClient.connect((err) => {
+//     if (err) {
+//         console.error("Failed to connect to PostgreSQL:", err);
+//     } else {
+//         console.log("Connected to PostgreSQL.");
+//     }
+// });
 
 connection.connect((err, conn) => {
     if (err) {
@@ -35,16 +35,29 @@ connection.connect((err, conn) => {
     }
 });
 
-const getUsersFromPostgres = async () => {
+// const getUsersFromPostgres = async () => {
+//     try {
+//         const res = await pgClient.query('SELECT username, password FROM users');
+//         // console.log(res.rows);
+//         return res.rows;
+//     } catch (err) {
+//         console.error('Error fetching users from PostgreSQL:', err);
+//         throw err;
+//     }
+// };
+
+
+const getUsersFromSnowflake = async () => {
     try {
-        const res = await pgClient.query('SELECT username, password FROM users');
-        // console.log(res.rows);
-        return res.rows;
+        const res = await querySnowflake('SELECT username, password FROM BI_REPORTS.PUBLIC.BI_PORTAL_USERS;');
+        // console.log(res);
+        return res;
     } catch (err) {
-        console.error('Error fetching users from PostgreSQL:', err);
+        console.error('Error fetching users from Snowflake:', err);
         throw err;
     }
 };
+
 
 const querySnowflake = async (sqlQuery) => {
     return new Promise((resolve, reject) => {
@@ -63,16 +76,18 @@ const querySnowflake = async (sqlQuery) => {
 
 
 async function login(username, password) {
+    invalid_flag = false;
     try {
-        const users = await getUsersFromPostgres();
+        const users = await getUsersFromSnowflake();
         var user = null;
+        // console.log(users);
         for (let i=0; i<users.length; i++) {
-            if ( users[i].username === username && users[i].password === password) {
+            if ( users[i].USERNAME === username ) {
                 user = users[i];
                 break;
-            }
+            } 
         }
-        if (!user || user.password !== password) {
+        if (!user || user.PASSWORD !== password) {
             throw new Error('Invalid username or password');
         }
         // const token = jwt.sign({ username: user.username }, 'secret-key', { expiresIn: '1h' });
