@@ -1,4 +1,7 @@
 thoughtspot-app-frontend/node_modules
+thoughtspot-app-frontend/dist
+
 thoughtspot-app-backend/node_modules
+thoughtspot-app-backend/aws-bip-keys.ppk
 thoughtspot-app-backend/.env
 thoughtspot-app-backend/snowflake.log
