@@ -41,7 +41,8 @@ export default {
   methods: {
     async login() {
       try {
-        const response = await axios.post('http://localhost:3000/login', {
+        // const response = await axios.post('http://localhost:3000/login', {
+          const response = await axios.post('http://ec2-100-27-211-231.compute-1.amazonaws.com:3000/login', {
           username: this.username,
           password: this.password
         });
